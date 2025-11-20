@@ -1,7 +1,6 @@
 # Digital Aid Selenium Test Project
 
 Welcome to the Appium Mobile Automation Test Project! This repository contains a collection of **Appium test scripts** for automating the testing of a Mobile Application. 
-**(Section Under Development)**
 
 ## Table of Contents
 
@@ -13,7 +12,6 @@ Welcome to the Appium Mobile Automation Test Project! This repository contains a
 
 ## Introduction
 
-**(Section Under Development)**
 
 ## Getting Started
 
@@ -21,9 +19,11 @@ Welcome to the Appium Mobile Automation Test Project! This repository contains a
 
 Before running the Appium tests, ensure you have the following installed on your system:
 
-- Java ( JDK 17 recommended )
-- Android Studio
-- A Code Editor ( [Spring Tool](https://spring.io/tools) built on Eclipse is recommended to run this project on your machine. )
+- Python (Installed in your device)
+- Node ( Installed in your device)
+- Appium Inspector ( Installed in your device)
+- Android Studio ( Installed in your device)
+- A Code Editor ( PyCharm is recommended )
 
 ### Installation
 
