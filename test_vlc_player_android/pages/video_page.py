@@ -15,8 +15,12 @@ class VideoPage:
     search_textfield_clear_id= 'Clear query'
     empty_message_id = 'emptyTextView'
     message_text : str # No item found for search no match
+    search_clear_query_id= 'search_close_btn'
+    search_close_accessibility_id= 'Collapse'
 
     display_settings_page_header_id="title"
+
+    more_options_dropdown_uiautomator = 'new UiSelector().className("android.widget.FrameLayout").instance(1)'
 
     def __init__(self, driver):
         self.driver = driver
@@ -41,10 +45,21 @@ class VideoPage:
         self.driver.find_element(AppiumBy.ID, self.search_textfield_id).send_keys(search_text)
         self.driver.find_element(AppiumBy.ID, self.empty_message_id).is_displayed()
         self.message_text = self.driver.find_element(AppiumBy.ID, self.empty_message_id).text
+        self.driver.find_element(AppiumBy.ID, self.search_clear_query_id).click()
+        self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.search_close_accessibility_id).click()
+
         return clickable
 
     def check_header_display_settings_functionality(self):
         clickable = self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_display_sittings_accessibility_id).is_enabled()
         self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_display_sittings_accessibility_id).click()
         settings_page_displayed=self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_display_sittings_accessibility_id).is_displayed()
+
         return clickable and settings_page_displayed
+
+    def check_header_more_options_functionality(self):
+        clickable = self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_more_options_accessibility_id).is_enabled()
+        self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_more_options_accessibility_id).click()
+        more_option_displayed = self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.more_options_dropdown_uiautomator).is_displayed()
+
+        return clickable and more_option_displayed

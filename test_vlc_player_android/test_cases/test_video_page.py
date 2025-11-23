@@ -18,9 +18,15 @@ class TestVideoPage:
         self.video_page = VideoPage(driver)
         assert self.video_page.check_header_search_functionality(search_text="no match")
         assert self.video_page.message_text == "No item found for search no match"
-        driver.back()
 
     def test_header_display_settings(self, driver):
         driver = driver
         self.video_page = VideoPage(driver)
+        assert self.video_page.check_header_display_settings_functionality()
+        driver.back()
+
+    def test_header_more_options_functionality(self, driver):
+        driver = driver
+        self.video_page = VideoPage(driver)
+        assert self.video_page.check_header_more_options_functionality()
         driver.back()
