@@ -1,6 +1,10 @@
-# Digital Aid Selenium Test Project
+# VLC Media Player For Android App Automation Test 
 
 Welcome to the Appium Mobile Automation Test Project! This repository contains a collection of **Appium test scripts** for automating the testing of a Mobile Application. 
+
+### View Test Report
+- Allure Report: [View Allure Report](https://ahmedmanan.github.io/Appium_Mobile_Automation_Test/reports/allure-report)
+- HTML Report: [View HTML Report](https://ahmedmanan.github.io/Appium_Mobile_Automation_Test/reports/report)
 
 ## Table of Contents
 
@@ -42,7 +46,6 @@ Before running the Appium tests, ensure you have the following installed on your
 
 ## Test Report
 
-**(Section Under Development)**
 
 ---
 
