@@ -16,6 +16,8 @@ class VideoPage:
     empty_message_id = 'emptyTextView'
     message_text : str # No item found for search no match
 
+    display_settings_page_header_id="title"
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -39,3 +41,10 @@ class VideoPage:
         self.driver.find_element(AppiumBy.ID, self.search_textfield_id).send_keys(search_text)
         self.driver.find_element(AppiumBy.ID, self.empty_message_id).is_displayed()
         self.message_text = self.driver.find_element(AppiumBy.ID, self.empty_message_id).text
+        return clickable
+
+    def check_header_display_settings_functionality(self):
+        clickable = self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_display_sittings_accessibility_id).is_enabled()
+        self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_display_sittings_accessibility_id).click()
+        settings_page_displayed=self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_display_sittings_accessibility_id).is_displayed()
+        return clickable and settings_page_displayed

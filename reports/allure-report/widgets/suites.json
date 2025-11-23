@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"f5d6b0eaeda442dd5327e1fe2b1b84cc","name":"test_google_files_app.tests","statistic":{"failed":0,"broken":1,"skipped":0,"passed":4,"unknown":0,"total":5}},{"uid":"d754e9909d7445af4595f29581177e66","name":"test_vlc_player_android.test_cases","statistic":{"failed":0,"broken":0,"skipped":0,"passed":4,"unknown":0,"total":4}}]}
