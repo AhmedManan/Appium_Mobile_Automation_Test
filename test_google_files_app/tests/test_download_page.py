@@ -2,7 +2,7 @@ from ..conftest import driver
 from ..pages.download_page import DownloadPage
 
 
-class TestDownloadPage():
+class TestDownloadPage:
 
     def test_title_verification(self, driver):
         driver = driver
