@@ -19,8 +19,23 @@ class VideoPage:
     def __init__(self, driver):
         self.driver = driver
 
-    def verify_heading_text_icon(self):
-        self.driver.find_element(AppiumBy.ID, self.page_toolbar_title_id).is_displayed()
-        self.driver.find_element(AppiumBy.ID, self.page_icon_id).is_displayed()
-        title_text = self.driver.find_element(AppiumBy.ID, self.page_toolbar_title_id).text
+    def verify_heading_title(self):
+        title = self.driver.find_element(AppiumBy.ID, self.page_toolbar_title_id)
+        title_text = title.text
         return title_text
+
+    def verify_navigation_elements(self):
+        icon_displayed=self.driver.find_element(AppiumBy.ID, self.page_icon_id).is_displayed()
+        title_displayed=self.driver.find_element(AppiumBy.ID, self.page_toolbar_title_id).is_displayed()
+        search_displayed=self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_search_accessibility_id).is_displayed()
+        display_settings_displayed=self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_display_sittings_accessibility_id).is_displayed()
+        more_options_displayed=self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_more_options_accessibility_id).is_displayed()
+
+        return icon_displayed and title_displayed and search_displayed and display_settings_displayed and more_options_displayed
+
+    def check_header_search_functionality(self, search_text:str):
+        clickable = self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_search_accessibility_id).is_enabled()
+        self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_search_accessibility_id).click()
+        self.driver.find_element(AppiumBy.ID, self.search_textfield_id).send_keys(search_text)
+        self.driver.find_element(AppiumBy.ID, self.empty_message_id).is_displayed()
+        self.message_text = self.driver.find_element(AppiumBy.ID, self.empty_message_id).text
