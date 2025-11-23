@@ -22,6 +22,9 @@ class VideoPage:
 
     more_options_dropdown_uiautomator = 'new UiSelector().className("android.widget.FrameLayout").instance(1)'
 
+    page_first_video_xpath = '(//android.widget.ImageView[@resource-id="org.videolan.vlc:id/ml_item_thumbnail"])[1]'
+    venom_video_xpath= '//android.widget.TextView[@resource-id="org.videolan.vlc:id/ml_item_title" and @text="VENOM THE LAST DANCE – Official Trailer (HD)"]'
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -61,5 +64,13 @@ class VideoPage:
         clickable = self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_more_options_accessibility_id).is_enabled()
         self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_more_options_accessibility_id).click()
         more_option_displayed = self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.more_options_dropdown_uiautomator).is_displayed()
+        self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_more_options_accessibility_id).click()
 
         return clickable and more_option_displayed
+
+    def check_video_thumbnail_functionality(self):
+        clickable = self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.page_first_video_xpath).is_enabled()
+        self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.page_first_video_xpath).click()
+        video_load = self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.page_icon_id).is_displayed(False)
+
+        return clickable and video_load

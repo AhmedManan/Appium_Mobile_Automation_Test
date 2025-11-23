@@ -30,3 +30,9 @@ class TestVideoPage:
         self.video_page = VideoPage(driver)
         assert self.video_page.check_header_more_options_functionality()
         driver.back()
+
+    def test_video_thumbnail(self, driver):
+        driver = driver
+        self.video_page = VideoPage(driver)
+        assert self.video_page.check_video_thumbnail_functionality()
+        driver.back()
