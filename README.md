@@ -13,6 +13,10 @@ Welcome to the Appium Mobile Automation Test Project! This repository contains a
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Test Scripts](#test-scripts)
+  - [Google My Files App Test List](#Google-My-Files-App-Test-List)
+  - [VLC Media Player App Test List](#VLC-Media-Player-App-Test-List)
+- [Project Features](#Project-Features)
+- [Additional Topics](#Additional-Topics)
 
 ## Project Setup
 
@@ -65,12 +69,10 @@ python -m pip install -r requirements.txt
 
 **(Section Under Development)**
 
-## Test Report
+## Project Features
 
 
----
-
-This Test Report provides an overview of the mobile automation testing process, test cases. Feel free to reach out for any questions or clarifications.
+## Additional Topics
 
 **You May Also See:** 
 - [Manual Test Report Of RFL Best Buy](https://github.com/AhmedManan/Manual_Test_RFL_BestBuy)
