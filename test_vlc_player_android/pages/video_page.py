@@ -1,4 +1,7 @@
 from appium.webdriver.common.appiumby import AppiumBy
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver import Keys
 
 
 class VideoPage:
@@ -54,11 +57,29 @@ class VideoPage:
         return clickable
 
     def check_header_display_settings_functionality(self):
-        clickable = self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_display_sittings_accessibility_id).is_enabled()
-        self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_display_sittings_accessibility_id).click()
-        settings_page_displayed=self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_display_sittings_accessibility_id).is_displayed()
+        # Setup a wait to handle transitions
+        wait = WebDriverWait(self.driver, 10)
 
-        return clickable and settings_page_displayed
+        # Find and verify the button is clickable
+        display_btn = self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_display_sittings_accessibility_id)
+        is_clickable = display_btn.is_enabled()
+
+        # Perform the click
+        display_btn.click()
+
+        # We wait for the 'title' (Display settings) of the new page to load.
+        try:
+            settings_header = wait.until(EC.presence_of_element_located(
+                (AppiumBy.ID, self.display_settings_page_header_id)
+            ))
+            settings_page_displayed = settings_header.is_displayed()
+
+            # Navigate back so the next test starts from a clean state
+            self.driver.back()
+
+            return is_clickable and settings_page_displayed
+        except:
+            return False
 
     def check_header_more_options_functionality(self):
         clickable = self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, self.header_more_options_accessibility_id).is_enabled()
